@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon projet 122</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakers Players</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header>
-    <h1>Mon projet</h1>
-  </header>
 
-  <main>
-    <ul id="list"></ul>
-  </main>
+<header>
+    <h1>Lakers Players</h1>
+    <p>Roster interactif des Lakers</p>
+</header>
 
-  <script src="js/script.js"></script>
+<main>
+
+    <!-- CONTROLS -->
+    <section class="controls">
+
+        <!-- Recherche -->
+        <input
+                type="text"
+                id="recherche"
+                placeholder="Rechercher un joueur..."
+        >
+
+        <!-- Filtre stats -->
+        <select id="filtreStat">
+            <option value="all">Toutes les stats</option>
+            <option value="points">Points > 20</option>
+            <option value="rebonds">Rebonds > 8</option>
+            <option value="assists">Assists > 5</option>
+        </select>
+
+        <!-- Filtre poste -->
+        <select id="filtrePoste">
+            <option value="all">Tous les postes</option>
+            <option value="MJ">Meneur (MJ)</option>
+            <option value="AR">Arrière (AR)</option>
+            <option value="AI">Ailier (AI)</option>
+            <option value="AF">Ailier Fort (AF)</option>
+            <option value="P">Pivot (P)</option>
+        </select>
+
+        <!-- Tri -->
+        <select id="tri">
+            <option value="nom">Trier par nom</option>
+            <option value="poste">Poste</option>
+            <option value="age">Âge</option>
+            <option value="taille">Taille</option>
+            <option value="points">Points</option>
+        </select>
+
+    </section>
+
+    <!-- GRID -->
+    <section
+            id="joueurs-container"
+            class="players-grid"
+    ></section>
+
+</main>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>
+
