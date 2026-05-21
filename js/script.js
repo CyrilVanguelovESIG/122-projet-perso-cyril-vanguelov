@@ -6,71 +6,210 @@
 
 const joueurs = [
 
-  {
-    nom: "LeBron James",
-    poste: "AI",
-    age: 41,
-    taille: 206,
-    points: 25.7,
-    rebonds: 7.3,
-    assists: 8.1,
-    image: "images/lebron.jpg"
-  },
+    {
+        nom: "LeBron James",
+        poste: "AI",
+        age: 41,
+        taille: 206,
+        points: 23.2,
+        rebonds: 6.7,
+        assists: 7.3,
+        image: "images/lebron.jpg"
+    },
 
-  {
-    nom: "Luka Doncic",
-    poste: "MJ",
-    age: 27,
-    taille: 201,
-    points: 32.1,
-    rebonds: 8.7,
-    assists: 9.4,
-    image: "images/doncic.jpg"
-  },
+    {
+        nom: "Luka Doncic",
+        poste: "MJ",
+        age: 27,
+        taille: 201,
+        points: 33.5,
+        rebonds: 7.7,
+        assists: 8.3,
+        image: "images/doncic.jpg"
+    },
 
-  {
-    nom: "Austin Reaves",
-    poste: "AR",
-    age: 28,
-    taille: 196,
-    points: 15.9,
-    rebonds: 4.3,
-    assists: 5.5,
-    image: "images/reaves.jpg"
-  },
+    {
+        nom: "Austin Reaves",
+        poste: "AR",
+        age: 27,
+        taille: 196,
+        points: 20,
+        rebonds: 4,
+        assists: 5.8,
+        image: "images/reaves.jpg"
+    },
 
-  {
-    nom: "Rui Hachimura",
-    poste: "AF",
-    age: 28,
-    taille: 203,
-    points: 13.6,
-    rebonds: 4.9,
-    assists: 1.2,
-    image: "images/rui.jpg"
-  },
+    {
+        nom: "Rui Hachimura",
+        poste: "AF",
+        age: 28,
+        taille: 203,
+        points: 17.5,
+        rebonds: 4,
+        assists: 1.7,
+        image: "images/rui.jpg"
+    },
 
-  {
-    nom: "Jaxson Hayes",
-    poste: "P",
-    age: 26,
-    taille: 213,
-    points: 7.8,
-    rebonds: 5.1,
-    assists: 0.9,
-    image: "images/hayes.jpg"
-  },
+    {
+        nom: "Jaxson Hayes",
+        poste: "P",
+        age: 25,
+        taille: 213,
+        points: 5.7,
+        rebonds: 3.2,
+        assists: 0.7,
+        image: "images/hayes.jpg"
+    },
 
-  {
-    nom: "Dorian Finney-Smith",
-    poste: "AI",
-    age: 33,
-    taille: 201,
-    points: 10.4,
-    rebonds: 4.8,
-    assists: 2.1,
-    image: "images/dfs.jpg"
-  }
+    {
+        nom: "Dorian Finney-Smith",
+        poste: "AI",
+        age: 33,
+        taille: 201,
+        points: 3.3,
+        rebonds: 2.5,
+        assists: 1,
+        image: "images/dfs.jpg"
+    },
+
+    {
+        nom: "Deandre Ayton",
+        poste: "P",
+        age: 27,
+        taille: 213,
+        points: 10,
+        rebonds: 9.6,
+        assists: 0.9,
+        image: "images/ayton.jpg"
+    },
+
+    {
+        nom: "Bronny James",
+        poste: "AR",
+        age: 21,
+        taille: 188,
+        points: 1.5,
+        rebonds: 0.4,
+        assists: 0.9,
+        image: "images/bronny.jpg"
+    },
+
+    {
+        nom: "Luke Kennard",
+        poste: "AR",
+        age: 29,
+        taille: 196,
+        points: 11.5,
+        rebonds: 3.5,
+        assists: 2.3,
+        image: "images/kennard.jpg"
+    },
+
+    {
+        nom: "Maxi Kleber",
+        poste: "AF",
+        age: 34,
+        taille: 208,
+        points: 0.3,
+        rebonds: 0.7,
+        assists: 1,
+        image: "images/kleber.jpg"
+    },
+
+    {
+        nom: "Dalton Knecht",
+        poste: "AF",
+        age: 25,
+        taille: 198,
+        points: 2,
+        rebonds: 1.2,
+        assists: 0.6,
+        image: "images/knecht.jpg"
+    },
+
+    {
+        nom: "Jake LaRavia",
+        poste: "AF",
+        age: 24,
+        taille: 201,
+        points: 3.3,
+        rebonds: 2.1,
+        assists: 0.8,
+        image: "images/laravia.jpg"
+    },
+
+    {
+        nom: "Chris Manon",
+        poste: "MJ",
+        age: 24,
+        taille: 193,
+        points: 0.8,
+        rebonds: 1.1,
+        assists: 0.3,
+        image: "images/manon.jpg"
+    },
+
+    {
+        nom: "Marcus Smart",
+        poste: "MJ",
+        age: 32,
+        taille: 191,
+        points: 12.9,
+        rebonds: 3.5,
+        assists: 5.1,
+        image: "images/smart.jpg"
+    },
+
+    {
+        nom: "Nick Smith Jr.",
+        poste: "MJ",
+        age: 22,
+        taille: 188,
+        points: 2.7,
+        rebonds: 0.2,
+        assists: 0.2,
+        image: "images/nicksmith.jpg"
+    },
+
+    {
+        nom: "Adou Thiero",
+        poste: "AF",
+        age: 22,
+        taille: 203,
+        points: 1.5,
+        rebonds: 2,
+        assists: 0.2,
+        image: "images/thiero.jpg"
+    },
+
+    {
+        nom: "Drew Timme",
+        poste: "AF",
+        age: 25,
+        taille: 208,
+        points: 3.4,
+        rebonds: 1.2,
+        assists: 0.9,
+        image: "images/timme.jpg"
+    },
+
+    {
+        nom: "Jarred Vanderbilt",
+        poste: "AF",
+        age: 27,
+        taille: 203,
+        points: 2.9,
+        rebonds: 3.4,
+        assists: 0.3,
+        image: "images/vanderbilt.jpg"
+    },
+
+    {
+        nom: "J.J. Redick",
+        poste: "C",
+        age: 41,
+        image: "image/Redick.jpg"
+    },
 
 ];
 
@@ -80,19 +219,19 @@ const joueurs = [
 
 function rechercherJoueurs(liste, terme) {
 
-  if (!terme) {
-    return liste;
-  }
+    if (!terme) {
+        return liste;
+    }
 
-  terme = terme.toLowerCase();
+    terme = terme.toLowerCase();
 
-  return liste.filter(joueur =>
+    return liste.filter(joueur =>
 
-    joueur.nom
-      .toLowerCase()
-      .includes(terme)
+        joueur.nom
+            .toLowerCase()
+            .includes(terme)
 
-  );
+    );
 }
 
 /* ==========================================
@@ -101,26 +240,26 @@ function rechercherJoueurs(liste, terme) {
 
 function filtrerStats(liste, filtre) {
 
-  switch (filtre) {
+    switch (filtre) {
 
-    case "points":
-      return liste.filter(joueur =>
-        joueur.points > 20
-      );
+        case "points":
+            return liste.filter(joueur =>
+                joueur.points > 20
+            );
 
-    case "rebonds":
-      return liste.filter(joueur =>
-        joueur.rebonds > 8
-      );
+        case "rebonds":
+            return liste.filter(joueur =>
+                joueur.rebonds > 8
+            );
 
-    case "assists":
-      return liste.filter(joueur =>
-        joueur.assists > 5
-      );
+        case "assists":
+            return liste.filter(joueur =>
+                joueur.assists > 5
+            );
 
-    default:
-      return liste;
-  }
+        default:
+            return liste;
+    }
 }
 
 /* ==========================================
@@ -129,13 +268,13 @@ function filtrerStats(liste, filtre) {
 
 function filtrerPoste(liste, poste) {
 
-  if (poste === "all") {
-    return liste;
-  }
+    if (poste === "all") {
+        return liste;
+    }
 
-  return liste.filter(joueur =>
-    joueur.poste === poste
-  );
+    return liste.filter(joueur =>
+        joueur.poste === poste
+    );
 }
 
 /* ==========================================
@@ -144,45 +283,45 @@ function filtrerPoste(liste, poste) {
 
 function trierJoueurs(liste, tri) {
 
-  const copie = [...liste];
+    const copie = [...liste];
 
-  switch (tri) {
+    switch (tri) {
 
-    case "poste":
+        case "poste":
 
-      const ordrePostes = {
-        MJ: 1,
-        AR: 2,
-        AI: 3,
-        AF: 4,
-        P: 5
-      };
+            const ordrePostes = {
+                MJ: 1,
+                AR: 2,
+                AI: 3,
+                AF: 4,
+                P: 5
+            };
 
-      return copie.sort((a, b) =>
-        ordrePostes[a.poste] -
-        ordrePostes[b.poste]
-      );
+            return copie.sort((a, b) =>
+                ordrePostes[a.poste] -
+                ordrePostes[b.poste]
+            );
 
-    case "age":
-      return copie.sort((a, b) =>
-        a.age - b.age
-      );
+        case "age":
+            return copie.sort((a, b) =>
+                a.age - b.age
+            );
 
-    case "taille":
-      return copie.sort((a, b) =>
-        b.taille - a.taille
-      );
+        case "taille":
+            return copie.sort((a, b) =>
+                b.taille - a.taille
+            );
 
-    case "points":
-      return copie.sort((a, b) =>
-        b.points - a.points
-      );
+        case "points":
+            return copie.sort((a, b) =>
+                b.points - a.points
+            );
 
-    default:
-      return copie.sort((a, b) =>
-        a.nom.localeCompare(b.nom)
-      );
-  }
+        default:
+            return copie.sort((a, b) =>
+                a.nom.localeCompare(b.nom)
+            );
+    }
 }
 
 /* ==========================================
@@ -191,7 +330,7 @@ function trierJoueurs(liste, tri) {
 
 function creerCarteJoueur(joueur) {
 
-  return `
+    return `
 
 <article class="player-card">
 
@@ -241,29 +380,29 @@ alt="${joueur.nom}"
 
 function afficherJoueurs(liste) {
 
-  const container =
-    document.querySelector("#joueurs-container");
+    const container =
+        document.querySelector("#joueurs-container");
 
-  if (liste.length === 0) {
+    if (liste.length === 0) {
 
-    container.innerHTML = `
+        container.innerHTML = `
 <p class="empty-message">
     Aucun joueur trouvé.
 </p>
 `;
 
-    return;
-  }
+        return;
+    }
 
-  let html = "";
+    let html = "";
 
-  liste.forEach(joueur => {
+    liste.forEach(joueur => {
 
-    html += creerCarteJoueur(joueur);
+        html += creerCarteJoueur(joueur);
 
-  });
+    });
 
-  container.innerHTML = html;
+    container.innerHTML = html;
 }
 
 /* ==========================================
@@ -272,43 +411,43 @@ function afficherJoueurs(liste) {
 
 function rafraichir() {
 
-  const recherche =
-    document.querySelector("#recherche").value;
+    const recherche =
+        document.querySelector("#recherche").value;
 
-  const filtre =
-    document.querySelector("#filtreStat").value;
+    const filtre =
+        document.querySelector("#filtreStat").value;
 
-  const poste =
-    document.querySelector("#filtrePoste").value;
+    const poste =
+        document.querySelector("#filtrePoste").value;
 
-  const tri =
-    document.querySelector("#tri").value;
+    const tri =
+        document.querySelector("#tri").value;
 
-  let resultat =
-    rechercherJoueurs(
-      joueurs,
-      recherche
-    );
+    let resultat =
+        rechercherJoueurs(
+            joueurs,
+            recherche
+        );
 
-  resultat =
-    filtrerStats(
-      resultat,
-      filtre
-    );
+    resultat =
+        filtrerStats(
+            resultat,
+            filtre
+        );
 
-  resultat =
-    filtrerPoste(
-      resultat,
-      poste
-    );
+    resultat =
+        filtrerPoste(
+            resultat,
+            poste
+        );
 
-  resultat =
-    trierJoueurs(
-      resultat,
-      tri
-    );
+    resultat =
+        trierJoueurs(
+            resultat,
+            tri
+        );
 
-  afficherJoueurs(resultat);
+    afficherJoueurs(resultat);
 }
 
 /* ==========================================
@@ -316,32 +455,32 @@ function rafraichir() {
 ========================================== */
 
 document
-  .querySelector("#recherche")
-  .addEventListener(
-    "input",
-    rafraichir
-  );
+    .querySelector("#recherche")
+    .addEventListener(
+        "input",
+        rafraichir
+    );
 
 document
-  .querySelector("#filtreStat")
-  .addEventListener(
-    "change",
-    rafraichir
-  );
+    .querySelector("#filtreStat")
+    .addEventListener(
+        "change",
+        rafraichir
+    );
 
 document
-  .querySelector("#filtrePoste")
-  .addEventListener(
-    "change",
-    rafraichir
-  );
+    .querySelector("#filtrePoste")
+    .addEventListener(
+        "change",
+        rafraichir
+    );
 
 document
-  .querySelector("#tri")
-  .addEventListener(
-    "change",
-    rafraichir
-  );
+    .querySelector("#tri")
+    .addEventListener(
+        "change",
+        rafraichir
+    );
 
 /* ==========================================
    INITIALISATION
