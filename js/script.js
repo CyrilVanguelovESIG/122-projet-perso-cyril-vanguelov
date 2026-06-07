@@ -1,7 +1,7 @@
 "use strict";
 
 /* ==========================================
-   DONNÉES
+   DONNÉES (tableau d'objets)
 ========================================== */
 
 const joueurs = [
@@ -208,34 +208,33 @@ const joueurs = [
         nom: "J.J. Redick",
         poste: "C",
         age: 41,
-        image: "image/Redick.jpg"
+        taille: 0,
+        points: 0,
+        rebonds: 0,
+        assists: 0,
+        image: "images/redick.jpg"
     },
 
 ];
 
 /* ==========================================
-   RECHERCHE
+   RECHERCHE — manipulation de tableau
 ========================================== */
 
 function rechercherJoueurs(liste, terme) {
 
-    if (!terme) {
-        return liste;
-    }
+    if (!terme) return liste;
 
-    terme = terme.toLowerCase();
+    const termeLower = terme.toLowerCase();
 
+    // .filter() — manipulation de tableau
     return liste.filter(joueur =>
-
-        joueur.nom
-            .toLowerCase()
-            .includes(terme)
-
+        joueur.nom.toLowerCase().includes(termeLower)
     );
 }
 
 /* ==========================================
-   FILTRE STATS
+   FILTRE STATS — .filter()
 ========================================== */
 
 function filtrerStats(liste, filtre) {
@@ -243,19 +242,14 @@ function filtrerStats(liste, filtre) {
     switch (filtre) {
 
         case "points":
-            return liste.filter(joueur =>
-                joueur.points > 20
-            );
+            // .filter() — manipulation de tableau
+            return liste.filter(joueur => joueur.points > 20);
 
         case "rebonds":
-            return liste.filter(joueur =>
-                joueur.rebonds > 8
-            );
+            return liste.filter(joueur => joueur.rebonds > 8);
 
         case "assists":
-            return liste.filter(joueur =>
-                joueur.assists > 5
-            );
+            return liste.filter(joueur => joueur.assists > 5);
 
         default:
             return liste;
@@ -263,146 +257,221 @@ function filtrerStats(liste, filtre) {
 }
 
 /* ==========================================
-   FILTRE POSTE
+   FILTRE POSTE — .filter()
 ========================================== */
 
 function filtrerPoste(liste, poste) {
 
-    if (poste === "all") {
-        return liste;
-    }
+    if (poste === "all") return liste;
 
-    return liste.filter(joueur =>
-        joueur.poste === poste
-    );
+    // .filter() — manipulation de tableau
+    return liste.filter(joueur => joueur.poste === poste);
 }
 
 /* ==========================================
-   TRI
+   TRI — .sort()
 ========================================== */
 
 function trierJoueurs(liste, tri) {
 
+    // On travaille sur une copie (pas de mutation)
     const copie = [...liste];
+
+    const ordrePostes = { MJ: 1, AR: 2, AI: 3, AF: 4, P: 5, C: 6 };
 
     switch (tri) {
 
         case "poste":
-
-            const ordrePostes = {
-                MJ: 1,
-                AR: 2,
-                AI: 3,
-                AF: 4,
-                P: 5
-            };
-
+            // .sort() — manipulation de tableau
             return copie.sort((a, b) =>
-                ordrePostes[a.poste] -
-                ordrePostes[b.poste]
+                (ordrePostes[a.poste] ?? 99) - (ordrePostes[b.poste] ?? 99)
             );
 
         case "age":
-            return copie.sort((a, b) =>
-                a.age - b.age
-            );
+            return copie.sort((a, b) => a.age - b.age);
 
         case "taille":
-            return copie.sort((a, b) =>
-                b.taille - a.taille
-            );
+            return copie.sort((a, b) => b.taille - a.taille);
 
         case "points":
-            return copie.sort((a, b) =>
-                b.points - a.points
-            );
+            return copie.sort((a, b) => b.points - a.points);
 
         default:
-            return copie.sort((a, b) =>
-                a.nom.localeCompare(b.nom)
-            );
+            return copie.sort((a, b) => a.nom.localeCompare(b.nom));
     }
 }
 
 /* ==========================================
-   CRÉER CARTE HTML
+   CRÉER CARTE — createElement (rendu DOM)
 ========================================== */
 
 function creerCarteJoueur(joueur) {
 
-    return `
+    // createElement — rendu DOM
+    const article = document.createElement("article");
+    article.className = "player-card";
 
-<article class="player-card">
+    // Image
+    const img = document.createElement("img");
+    img.src = joueur.image;
+    img.alt = joueur.nom; // attribut alt sur l'image
+    article.appendChild(img);
 
-    <img
-src="${joueur.image}"
-alt="${joueur.nom}"
-    >
+    // Div info
+    const info = document.createElement("div");
+    info.className = "player-info";
 
-    <div class="player-info">
+    // Nom
+    const h3 = document.createElement("h3");
+    h3.textContent = joueur.nom;
+    info.appendChild(h3);
 
-    <h3>${joueur.nom}</h3>
+    // Meta (poste · age · taille)
+    const meta = document.createElement("p");
+    meta.className = "player-meta";
 
-<p class="player-meta">
-    ${joueur.poste}
-    ·
-    ${joueur.age} ans
-    ·
-    ${joueur.taille} cm
-</p>
+    if (joueur.poste === "C") {
+        meta.textContent = `${joueur.poste} · ${joueur.age} ans`;
+    } else {
+        meta.textContent = `${joueur.poste} · ${joueur.age} ans · ${joueur.taille} cm`;
+    }
+    info.appendChild(meta);
 
-<div class="stats">
+    // Stats (badges)
+    if (joueur.poste !== "C") {
 
-          <span class="badge">
-            ${joueur.points} PTS
-          </span>
+        const statsDiv = document.createElement("div");
+        statsDiv.className = "stats";
 
-    <span class="badge">
-            ${joueur.rebonds} REB
-          </span>
+        const statsData = [
+            { label: "PTS", val: joueur.points },
+            { label: "REB", val: joueur.rebonds },
+            { label: "AST", val: joueur.assists }
+        ];
 
-    <span class="badge">
-            ${joueur.assists} AST
-          </span>
+        statsData.forEach(({ label, val }) => {
+            const badge = document.createElement("span");
+            badge.className = "badge";
+            badge.textContent = `${val} ${label}`;
+            statsDiv.appendChild(badge);
+        });
 
-</div>
+        info.appendChild(statsDiv);
+    }
 
-</div>
+    // Bouton suppression
+    const btnSuppr = document.createElement("button");
+    btnSuppr.className = "btn-supprimer";
+    btnSuppr.textContent = "🗑 Supprimer";
 
-</article>
+    // addEventListener — interactions
+    btnSuppr.addEventListener("click", () => {
+        supprimerJoueur(joueur.nom);
+    });
 
-`;
+    info.appendChild(btnSuppr);
+
+    article.appendChild(info);
+
+    return article;
 }
 
 /* ==========================================
-   AFFICHAGE HTML
+   AFFICHAGE — innerHTML + createElement
 ========================================== */
 
 function afficherJoueurs(liste) {
 
-    const container =
-        document.querySelector("#joueurs-container");
+    const container = document.querySelector("#joueurs-container");
+
+    // Vider le conteneur
+    container.innerHTML = "";
 
     if (liste.length === 0) {
 
+        // innerHTML pour le message vide
         container.innerHTML = `
-<p class="empty-message">
-    Aucun joueur trouvé.
-</p>
-`;
-
+            <p class="empty-message">Aucun joueur trouvé.</p>
+        `;
         return;
     }
 
-    let html = "";
-
+    // createElement pour chaque carte — rendu DOM
     liste.forEach(joueur => {
-
-        html += creerCarteJoueur(joueur);
-
+        const carte = creerCarteJoueur(joueur);
+        container.appendChild(carte);
     });
+}
 
-    container.innerHTML = html;
+/* ==========================================
+   SUPPRESSION — .splice()
+========================================== */
+
+function supprimerJoueur(nom) {
+
+    // Trouver l'index du joueur
+    const index = joueurs.findIndex(j => j.nom === nom);
+
+    if (index !== -1) {
+        // .splice() — manipulation de tableau
+        joueurs.splice(index, 1);
+        rafraichir();
+    }
+}
+
+/* ==========================================
+   AJOUT VIA FORMULAIRE
+========================================== */
+
+function ajouterJoueur() {
+
+    const erreur = document.querySelector("#form-error");
+
+    // Récupérer les valeurs
+    const nom     = document.querySelector("#input-nom").value.trim();
+    const poste   = document.querySelector("#input-poste").value;
+    const age     = parseInt(document.querySelector("#input-age").value);
+    const taille  = parseInt(document.querySelector("#input-taille").value);
+    const points  = parseFloat(document.querySelector("#input-points").value) || 0;
+    const rebonds = parseFloat(document.querySelector("#input-rebonds").value) || 0;
+    const assists = parseFloat(document.querySelector("#input-assists").value) || 0;
+    const image   = document.querySelector("#input-image").value.trim() || "images/placeholder.jpg";
+
+    // Validation simple
+    if (!nom || !poste || isNaN(age) || isNaN(taille)) {
+        erreur.textContent = "⚠ Veuillez remplir les champs obligatoires (Nom, Poste, Âge, Taille).";
+        return;
+    }
+
+    erreur.textContent = "";
+
+    // Créer le nouvel objet joueur
+    const nouveauJoueur = {
+        nom,
+        poste,
+        age,
+        taille,
+        points,
+        rebonds,
+        assists,
+        image
+    };
+
+    // Ajouter au tableau
+    joueurs.push(nouveauJoueur);
+
+    // Réinitialiser le formulaire
+    document.querySelector("#input-nom").value    = "";
+    document.querySelector("#input-poste").value  = "";
+    document.querySelector("#input-age").value    = "";
+    document.querySelector("#input-taille").value = "";
+    document.querySelector("#input-points").value = "";
+    document.querySelector("#input-rebonds").value= "";
+    document.querySelector("#input-assists").value= "";
+    document.querySelector("#input-image").value  = "";
+
+    // Rafraîchir l'affichage
+    rafraichir();
 }
 
 /* ==========================================
@@ -411,76 +480,41 @@ function afficherJoueurs(liste) {
 
 function rafraichir() {
 
-    const recherche =
-        document.querySelector("#recherche").value;
+    const recherche = document.querySelector("#recherche").value;
+    const filtre    = document.querySelector("#filtreStat").value;
+    const poste     = document.querySelector("#filtrePoste").value;
+    const tri       = document.querySelector("#tri").value;
 
-    const filtre =
-        document.querySelector("#filtreStat").value;
-
-    const poste =
-        document.querySelector("#filtrePoste").value;
-
-    const tri =
-        document.querySelector("#tri").value;
-
-    let resultat =
-        rechercherJoueurs(
-            joueurs,
-            recherche
-        );
-
-    resultat =
-        filtrerStats(
-            resultat,
-            filtre
-        );
-
-    resultat =
-        filtrerPoste(
-            resultat,
-            poste
-        );
-
-    resultat =
-        trierJoueurs(
-            resultat,
-            tri
-        );
+    let resultat = rechercherJoueurs(joueurs, recherche);    // .filter()
+    resultat = filtrerStats(resultat, filtre);           // .filter()
+    resultat = filtrerPoste(resultat, poste);            // .filter()
+    resultat = trierJoueurs(resultat, tri);              // .sort()
 
     afficherJoueurs(resultat);
 }
 
 /* ==========================================
-   EVENTS
+   EVENTS — addEventListener
 ========================================== */
 
-document
-    .querySelector("#recherche")
-    .addEventListener(
-        "input",
-        rafraichir
-    );
+// Recherche en temps réel
+document.querySelector("#recherche")
+    .addEventListener("input", rafraichir);
 
-document
-    .querySelector("#filtreStat")
-    .addEventListener(
-        "change",
-        rafraichir
-    );
+// Filtres
+document.querySelector("#filtreStat")
+    .addEventListener("change", rafraichir);
 
-document
-    .querySelector("#filtrePoste")
-    .addEventListener(
-        "change",
-        rafraichir
-    );
+document.querySelector("#filtrePoste")
+    .addEventListener("change", rafraichir);
 
-document
-    .querySelector("#tri")
-    .addEventListener(
-        "change",
-        rafraichir
-    );
+// Tri
+document.querySelector("#tri")
+    .addEventListener("change", rafraichir);
+
+// Ajout via formulaire
+document.querySelector("#btn-ajouter")
+    .addEventListener("click", ajouterJoueur);
 
 /* ==========================================
    INITIALISATION

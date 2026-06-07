@@ -14,15 +14,36 @@
 
 :root {
 
-    --lakers-purple: #552583;
-    --lakers-gold: #FDB927;
+    --lakers-purple:        #552583;
+    --lakers-purple-light:  rgba(85, 37, 131, 0.18);
+    --lakers-purple-mid:    rgba(85, 37, 131, 0.4);
+    --lakers-purple-strong: rgba(85, 37, 131, 0.95);
 
-    --black: #0b0b0f;
-    --dark-card: #15151d;
+    --lakers-gold:          #FDB927;
+    --lakers-gold-light:    rgba(253, 185, 39, 0.15);
+    --lakers-gold-mid:      rgba(253, 185, 39, 0.4);
+    --lakers-gold-glow:     rgba(253, 185, 39, 0.5);
+    --lakers-gold-hover:    rgba(253, 185, 39, 0.7);
+    --lakers-gold-badge:    #ffcf5c;
 
-    --text: #ffffff;
-    --text-secondary: #bdbdbd;
+    --black:                #0b0b0f;
+    --dark-bg:              #1b1030;
+    --dark-card:            #15151d;
+    --dark-card-solid:      rgba(21, 21, 29, 0.95);
+    --dark-card-full:       rgba(21, 21, 29, 1);
 
+    --text:                 #ffffff;
+    --text-secondary:       #bdbdbd;
+    --text-muted:           #aaaaaa;
+    --text-dark:            #000000;
+
+    --border-radius-card:   18px;
+    --border-radius-input:  12px;
+    --border-radius-badge:  8px;
+    --border-radius-btn:    10px;
+
+    --transition-speed:     0.35s;
+    --shadow-strong:        0 15px 35px rgba(0,0,0,0.5);
 }
 
 /* ==========================================
@@ -31,13 +52,13 @@
 
 body {
 
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     background:
             linear-gradient(
                     180deg,
-                    #1b1030 0%,
-                    #0b0b0f 100%
+                    var(--dark-bg) 0%,
+                    var(--black) 100%
             );
 
     color: var(--text);
@@ -58,7 +79,7 @@ header {
     background:
             linear-gradient(
                     180deg,
-                    rgba(85, 37, 131, 0.95),
+                    var(--lakers-purple-strong),
                     rgba(11, 11, 15, 0.95)
             );
 
@@ -80,7 +101,7 @@ header h1 {
     letter-spacing: 2px;
 
     text-shadow:
-            0 0 15px rgba(253,185,39,0.5);
+            0 0 15px var(--lakers-gold-glow);
 }
 
 header p {
@@ -90,6 +111,67 @@ header p {
     font-size: 1rem;
 
     letter-spacing: 1px;
+}
+
+/* ==========================================
+   NAV
+========================================== */
+
+nav {
+
+    background: rgba(11, 11, 15, 0.9);
+
+    border-bottom:
+            1px solid var(--lakers-gold-light);
+
+    padding: 0.8rem 2rem;
+}
+
+nav ul {
+
+    display: flex;
+
+    list-style: none;
+
+    gap: 2rem;
+
+    max-width: 1350px;
+
+    margin: auto;
+}
+
+nav ul li a {
+
+    color: var(--text-secondary);
+
+    text-decoration: none;
+
+    font-size: 0.95rem;
+
+    letter-spacing: 0.5px;
+
+    padding: 0.3rem 0;
+
+    border-bottom:
+            2px solid transparent;
+
+    transition: color 0.2s, border-color 0.2s;
+}
+
+nav ul li a:hover {
+
+    color: var(--lakers-gold);
+
+    border-bottom-color: var(--lakers-gold);
+}
+
+nav ul li a:focus {
+
+    outline: 2px solid var(--lakers-gold);
+
+    outline-offset: 4px;
+
+    border-radius: 2px;
 }
 
 /* ==========================================
@@ -120,30 +202,52 @@ main {
     margin-bottom: 2.5rem;
 }
 
-.controls input,
-.controls select {
+.control-group {
+
+    display: flex;
+
+    flex-direction: column;
 
     flex: 1;
 
     min-width: 200px;
 
+    gap: 0.4rem;
+}
+
+.control-group label {
+
+    color: var(--text-secondary);
+
+    font-size: 0.82rem;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+}
+
+.controls input,
+.controls select {
+
     padding: 1rem;
 
-    border-radius: 12px;
+    border-radius: var(--border-radius-input);
 
     border:
-            2px solid rgba(253,185,39,0.2);
+            2px solid var(--lakers-gold-light);
 
     background:
-            rgba(21,21,29,0.95);
+            var(--dark-card-solid);
 
-    color: white;
+    color: var(--text);
 
     font-size: 0.95rem;
 
     outline: none;
 
-    transition: 0.3s;
+    transition:
+            border-color 0.3s,
+            box-shadow 0.3s;
 }
 
 .controls input:focus,
@@ -152,7 +256,13 @@ main {
     border-color: var(--lakers-gold);
 
     box-shadow:
-            0 0 15px rgba(253,185,39,0.4);
+            0 0 15px var(--lakers-gold-mid);
+}
+
+.controls input:hover,
+.controls select:hover {
+
+    border-color: rgba(253, 185, 39, 0.4);
 }
 
 /* ==========================================
@@ -164,7 +274,7 @@ main {
     display: grid;
 
     grid-template-columns:
-    repeat(auto-fill, minmax(250px, 1fr));
+        repeat(auto-fill, minmax(250px, 1fr));
 
     gap: 2rem;
 }
@@ -178,21 +288,21 @@ main {
     background:
             linear-gradient(
                     180deg,
-                    rgba(85,37,131,0.18),
-                    rgba(21,21,29,1)
+                    var(--lakers-purple-light),
+                    var(--dark-card-full)
             );
 
     border:
-            2px solid rgba(253,185,39,0.15);
+            2px solid var(--lakers-gold-light);
 
-    border-radius: 18px;
+    border-radius: var(--border-radius-card);
 
     overflow: hidden;
 
     transition:
-            transform 0.35s ease,
-            box-shadow 0.35s ease,
-            border-color 0.35s ease;
+            transform var(--transition-speed) ease,
+            box-shadow var(--transition-speed) ease,
+            border-color var(--transition-speed) ease;
 }
 
 .player-card:hover {
@@ -201,12 +311,11 @@ main {
             translateY(-10px)
             scale(1.02);
 
-    border-color:
-            rgba(253,185,39,0.7);
+    border-color: var(--lakers-gold-hover);
 
     box-shadow:
-            0 15px 35px rgba(0,0,0,0.5),
-            0 0 25px rgba(85,37,131,0.4);
+            var(--shadow-strong),
+            0 0 25px var(--lakers-purple-mid);
 }
 
 /* ==========================================
@@ -221,7 +330,7 @@ main {
 
     object-fit: cover;
 
-    transition: 0.4s;
+    transition: transform 0.4s;
 }
 
 .player-card:hover img {
@@ -270,6 +379,8 @@ main {
     flex-wrap: wrap;
 
     gap: 0.6rem;
+
+    margin-bottom: 1rem;
 }
 
 .badge {
@@ -278,15 +389,14 @@ main {
             linear-gradient(
                     135deg,
                     var(--lakers-gold),
-                    #ffcf5c
+                    var(--lakers-gold-badge)
             );
 
-    color: black;
+    color: var(--text-dark);
 
-    padding:
-            0.35rem 0.7rem;
+    padding: 0.35rem 0.7rem;
 
-    border-radius: 8px;
+    border-radius: var(--border-radius-badge);
 
     font-weight: bold;
 
@@ -294,6 +404,50 @@ main {
 
     box-shadow:
             0 3px 10px rgba(253,185,39,0.3);
+}
+
+/* ==========================================
+   BOUTON SUPPRESSION
+========================================== */
+
+.btn-supprimer {
+
+    width: 100%;
+
+    padding: 0.6rem;
+
+    background: transparent;
+
+    border: 1px solid rgba(200, 50, 50, 0.4);
+
+    border-radius: var(--border-radius-badge);
+
+    color: #e06060;
+
+    font-size: 0.82rem;
+
+    cursor: pointer;
+
+    transition:
+            background 0.25s,
+            border-color 0.25s,
+            color 0.25s;
+}
+
+.btn-supprimer:hover {
+
+    background: rgba(200, 50, 50, 0.2);
+
+    border-color: rgba(200, 50, 50, 0.8);
+
+    color: #ff8080;
+}
+
+.btn-supprimer:focus {
+
+    outline: 2px solid #e06060;
+
+    outline-offset: 2px;
 }
 
 /* ==========================================
@@ -310,23 +464,263 @@ main {
 
     font-size: 1.3rem;
 
-    color: #aaa;
+    color: var(--text-muted);
 }
 
 /* ==========================================
-   RESPONSIVE
+   FORMULAIRE D'AJOUT
 ========================================== */
 
-@media (max-width: 768px) {
+.form-section {
+
+    margin-top: 4rem;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    var(--lakers-purple-light),
+                    var(--dark-card-full)
+            );
+
+    border: 2px solid var(--lakers-gold-light);
+
+    border-radius: var(--border-radius-card);
+
+    padding: 2rem;
+}
+
+.form-section h2 {
+
+    color: var(--lakers-gold);
+
+    font-size: 1.8rem;
+
+    margin-bottom: 1.5rem;
+
+    text-shadow:
+            0 0 10px rgba(253,185,39,0.3);
+}
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 1.2rem;
+
+    margin-bottom: 1.2rem;
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.4rem;
+}
+
+.form-group label {
+
+    color: var(--text-secondary);
+
+    font-size: 0.82rem;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select {
+
+    padding: 0.9rem;
+
+    border-radius: var(--border-radius-input);
+
+    border:
+            2px solid var(--lakers-gold-light);
+
+    background:
+            var(--dark-card-solid);
+
+    color: var(--text);
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+            border-color 0.3s,
+            box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: var(--lakers-gold);
+
+    box-shadow:
+            0 0 15px var(--lakers-gold-mid);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+
+    border-color: rgba(253, 185, 39, 0.4);
+}
+
+.form-error {
+
+    color: #e06060;
+
+    font-size: 0.9rem;
+
+    margin-bottom: 0.8rem;
+
+    min-height: 1.2rem;
+}
+
+.btn-primary {
+
+    padding: 1rem 2rem;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    var(--lakers-purple),
+                    #7a35c0
+            );
+
+    border: 2px solid var(--lakers-gold-light);
+
+    border-radius: var(--border-radius-btn);
+
+    color: var(--text);
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    letter-spacing: 0.5px;
+
+    transition:
+            background 0.3s,
+            border-color 0.3s,
+            box-shadow 0.3s,
+            transform 0.2s;
+}
+
+.btn-primary:hover {
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #6e30a8,
+                    #9040e0
+            );
+
+    border-color: var(--lakers-gold);
+
+    box-shadow:
+            0 0 20px var(--lakers-purple-mid);
+
+    transform: translateY(-2px);
+}
+
+.btn-primary:focus {
+
+    outline: 2px solid var(--lakers-gold);
+
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+
+    text-align: center;
+
+    padding: 2rem 1rem;
+
+    margin-top: 4rem;
+
+    background:
+            rgba(11, 11, 15, 0.9);
+
+    border-top:
+            2px solid var(--lakers-gold-light);
+
+    color: var(--text-secondary);
+
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   RESPONSIVE — DESKTOP (≥ 1024px)
+========================================== */
+
+@media (min-width: 1024px) {
 
     header h1 {
 
-        font-size: 2.8rem;
+        font-size: 5rem;
+    }
+
+    .players-grid {
+
+        grid-template-columns:
+            repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .form-grid {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE — MOBILE (≤ 600px)
+========================================== */
+
+@media (max-width: 600px) {
+
+    header {
+
+        padding: 2rem 1rem 1.5rem;
+    }
+
+    header h1 {
+
+        font-size: 2.5rem;
+    }
+
+    nav ul {
+
+        gap: 1rem;
+    }
+
+    main {
+
+        padding: 1.2rem;
     }
 
     .controls {
 
         flex-direction: column;
+    }
+
+    .control-group {
+
+        width: 100%;
+        min-width: unset;
     }
 
     .controls input,
@@ -338,12 +732,34 @@ main {
     .players-grid {
 
         grid-template-columns:
-      repeat(auto-fill, minmax(190px, 1fr));
+            repeat(auto-fill, minmax(160px, 1fr));
+
+        gap: 1.2rem;
     }
 
     .player-card img {
 
-        height: 260px;
+        height: 220px;
+    }
+
+    .player-info h3 {
+
+        font-size: 1.1rem;
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .form-section {
+
+        padding: 1.2rem;
+    }
+
+    .btn-primary {
+
+        width: 100%;
     }
 }
 
