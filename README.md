@@ -8,7 +8,7 @@ Cette application web permet de consulter et gérer l'effectif des Lakers. Cahqu
 
 ## Lien GitHub Pages
 
-[Colle ici le lien de ton site en ligne]
+Lien : https://cyrilvanguelovesig.github.io/122-projet-perso-cyril-vanguelov/
 
 ## Fonctionnalités
 
