@@ -4,7 +4,7 @@ Projet JavaScript — Cours 122 (ESIG)
 
 ## Description
 
-[Décris ton projet ici : quel type de données tu gères et pourquoi tu as choisi cette ressource]
+Cette application web permet de consulter et gérer l'effectif des Lakers. Cahque joueur est présenté avec ses principales statistiques et informations. L'utilisateur peut rechercher un joueur, trier l'effectif selon différents critères statistiques, ajouter de nouveaux joueurs via un formulaire et supprimer des joueurs existants. J'ai choisi ce projet car je suis passionné de basket et plus particulièrement par les Lakers. Ce projet m'a donc permis de combiner passion avec l'apprentissage du développement web en javascript.
 
 ## Lien GitHub Pages
 
@@ -12,73 +12,34 @@ Projet JavaScript — Cours 122 (ESIG)
 
 ## Fonctionnalités
 
-- [ ] Affichage dynamique de la liste
-- [ ] Tri par plusieurs critères
-- [ ] Recherche en temps réel
-- [ ] Ajout via formulaire
-- [ ] Suppression d'éléments
-- [ ] Responsive (mobile + desktop)
-
-## Captures d'écran
-
-[Ajoute des captures de ton projet ici]
+- Affichage dynamique de la liste
+- Tri par plusieurs critères
+- Recherche en temps réel
+- Ajout via formulaire
+- Suppression d'éléments
+- Responsive (mobile + desktop)
 
 ## Transparence IA
 
 ### Outils utilisés
-[Quels outils d'IA as-tu utilisés ? (Copilot, ChatGPT, Claude, etc.)]
+- Chat GPT pour certaines implémentations sur le HTML et CSS de base
+- Claude.ia pour certaines implémentations principalement pour le javascript et la modificatio ndu format d'image
 
 ### Prompts utilisés
-[Copie ici les prompts importants que tu as donnés à l'IA]
+- Comment trier un tableau d'objet selon différentes statistiques en javascript ?
+- Comment créer une barre de recherche en temps réel en javascript ?
+- Comment ajouter et supprimer des éléments d'une liste javascript ?
+- Comment rendre une applciation web responsive avec CSS ?
 
 ### Ce que j'ai appris vs ce que l'IA a généré
-[Explique ce que tu as écrit toi-même et ce que l'IA a produit. Qu'as-tu appris en utilisant l'IA ?]
+Moi :
+- Conception du projet
+- Structure HTML et CSS
+- Mettre en place une bonne structure des données des joueurs afin de trier de manière cohérente
+- Implémentation de fonctionnalités principales : affichage, recherche, tri, ajout et suppression
 
----
 
-<details>
-<summary>📋 Exemple — Projet "Jeux Vidéo"</summary>
-
-> Cet exemple montre à quoi pourrait ressembler un README complété.
-> **Supprime cet encart** quand tu remplis ton propre README.
-
-## Description
-
-Application web pour gérer ma collection de jeux vidéo. J'ai choisi cette
-ressource car je suis passionné de gaming et je voulais un catalogue personnel
-pour trier mes jeux par note et plateforme.
-
-## Lien GitHub Pages
-
-https://mon-pseudo.github.io/esig-122-jeux-video/
-
-## Fonctionnalités
-
-- [x] Affichage dynamique de la liste (cartes avec image, nom, catégorie, note)
-- [x] Tri par nom, note et année
-- [x] Recherche en temps réel par nom
-- [x] Ajout d'un jeu via formulaire
-- [x] Suppression avec confirmation
-- [x] Responsive (mobile + desktop)
-
-## Captures d'écran
-
-![Aperçu desktop](img/screenshot-desktop.png)
-![Aperçu mobile](img/screenshot-mobile.png)
-
-## Transparence IA
-
-### Outils utilisés
-- GitHub Copilot (dans WebStorm) pour la génération des données et l'autocomplétion
-- ChatGPT pour comprendre `Array.sort()` avec `localeCompare()`
-
-### Prompts utilisés
-- "Génère un tableau de 10 jeux vidéo avec id, name, category, platform, rating, year, image"
-- "Explique-moi comment trier un tableau d'objets par une propriété texte en JavaScript"
-
-### Ce que j'ai appris vs ce que l'IA a généré
-- **Généré par l'IA** : le tableau de données initial (10 objets)
-- **Écrit par moi** : toute la logique d'affichage, tri, recherche, ajout et suppression
-- **Appris grâce à l'IA** : j'ai compris comment `localeCompare()` gère les accents en français
-
-</details>
+IA :
+- Méthode javascript (filter, sort, map)
+- Peaufinage du code HTML, CSS et implémentation de code javascript
+- Aide au debolagage et amélioration du code
