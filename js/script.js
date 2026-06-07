@@ -404,6 +404,39 @@ function afficherJoueurs(liste) {
 }
 
 /* ==========================================
+   TOAST — FEEDBACK UTILISATEUR
+========================================== */
+
+let toastTimer = null;
+
+function afficherToast(message, type = "success") {
+
+    // Créer le toast s'il n'existe pas encore
+    let toast = document.querySelector("#toast");
+
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        document.body.appendChild(toast);
+    }
+
+    // Annuler le timer précédent si le toast est déjà visible
+    if (toastTimer) {
+        clearTimeout(toastTimer);
+    }
+
+    // Mise à jour contenu et type
+    toast.textContent = message;
+    toast.className = `toast-${type} toast-visible`;
+
+    // Disparition automatique après 3s
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("toast-visible");
+        toastTimer = null;
+    }, 3000);
+}
+
+/* ==========================================
    SUPPRESSION — .splice()
 ========================================== */
 
@@ -413,9 +446,11 @@ function supprimerJoueur(nom) {
     const index = joueurs.findIndex(j => j.nom === nom);
 
     if (index !== -1) {
+        const nomJoueur = joueurs[index].nom;
         // .splice() — manipulation de tableau
         joueurs.splice(index, 1);
         rafraichir();
+        afficherToast(`🗑 ${nomJoueur} supprimé du roster.`, "error");
     }
 }
 
@@ -472,6 +507,7 @@ function ajouterJoueur() {
 
     // Rafraîchir l'affichage
     rafraichir();
+    afficherToast(`✅ ${nom} ajouté au roster !`, "success");
 }
 
 /* ==========================================

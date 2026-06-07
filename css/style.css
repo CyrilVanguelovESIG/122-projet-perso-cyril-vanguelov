@@ -640,6 +640,72 @@ main {
 }
 
 /* ==========================================
+   TOAST — FEEDBACK UTILISATEUR
+========================================== */
+
+#toast {
+
+    position: fixed;
+
+    bottom: 2rem;
+    right: 2rem;
+
+    padding: 1rem 1.6rem;
+
+    border-radius: var(--border-radius-input);
+
+    font-size: 0.95rem;
+
+    font-weight: bold;
+
+    color: var(--text-dark);
+
+    box-shadow:
+            0 8px 30px rgba(0,0,0,0.4);
+
+    z-index: 1000;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    pointer-events: none;
+
+    transition:
+            opacity 0.35s ease,
+            transform 0.35s ease;
+}
+
+#toast.toast-success {
+
+    background:
+            linear-gradient(
+                    135deg,
+                    var(--lakers-gold),
+                    var(--lakers-gold-badge)
+            );
+}
+
+#toast.toast-error {
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #e06060,
+                    #ff9090
+            );
+
+    color: var(--text);
+}
+
+#toast.toast-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/* ==========================================
    FOOTER
 ========================================== */
 
@@ -762,4 +828,3 @@ footer {
         width: 100%;
     }
 }
-
